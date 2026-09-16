@@ -75,6 +75,26 @@ export class Thread {
         return this.#authors;
     }
 
+    /**
+     * Two threads are equal if they share the same root and contain the same messages/containers.
+     * @param {Thread} other
+     * @returns true if the two threads are equal
+     */
+    equals(other) {
+        // first, make sure we're comparing to another thread
+        if (!(other instanceof Thread)) {
+            return false;
+        }
+        const haveSameRoot = this.root.id === other.root.id;
+        const haveSameSize = this.size === other.size;
+
+        // don't care about sort order
+        const ourElements = this.#containers.map((container) => container.id).toSorted();
+        const otherElements = other.#containers.map((container) => container.id).toSorted();
+
+        return haveSameRoot && haveSameSize && ourElements.every((id, i) => id === otherElements[i]);
+    }
+
     getPositioned(width) {
         return new PositionedThread(this.#containers, this.#selectedContainer, this.#authors, width);
     }

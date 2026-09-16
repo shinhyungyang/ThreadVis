@@ -832,7 +832,7 @@ export class Visualisation {
         // check if visualisation parameters changed
         // if not, reset zoom level
         let keepExisting = false;
-        if (thread.root.id === this.#currentThread?.root.id && !this.#changed) {
+        if (thread.equals(this.#currentThread) && !this.#changed) {
             keepExisting = true;
         }
 
