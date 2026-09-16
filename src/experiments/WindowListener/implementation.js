@@ -977,19 +977,6 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
       }
     }
 
-    // Unload JSMs of this add-on
-    const rootURI = this.extension.rootURI.spec;
-    for (let module of Cu.loadedModules) {
-      if (
-        module.startsWith(rootURI) ||
-        (module.startsWith("chrome://") &&
-          chromeUrls.find((s) => module.startsWith(s)))
-      ) {
-        this.log("Unloading: " + module);
-        Cu.unload(module);
-      }
-    }
-
     // Flush all caches
     Services.obs.notifyObservers(null, "startupcache-invalidate");
     this.registeredWindows = {};
