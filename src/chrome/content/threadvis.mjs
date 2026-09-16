@@ -708,12 +708,12 @@ export class ThreadVis {
             }
 
             // set checked attributes for account
-            document.getElementById("ThreadVisStatusMenuEnableAccount").setAttribute("checked", !disabledAccount);
-            document.getElementById("ThreadVisStatusMenuDisableAccount").setAttribute("checked", disabledAccount);
+            document.getElementById("ThreadVisStatusMenuEnableAccount").toggleAttribute("checked", !disabledAccount);
+            document.getElementById("ThreadVisStatusMenuDisableAccount").toggleAttribute("checked", disabledAccount);
 
             // set checked attributes for folder
-            document.getElementById("ThreadVisStatusMenuEnableFolder").setAttribute("checked", !disabledFolder);
-            document.getElementById("ThreadVisStatusMenuDisableFolder").setAttribute("checked", disabledFolder);
+            document.getElementById("ThreadVisStatusMenuEnableFolder").toggleAttribute("checked", !disabledFolder);
+            document.getElementById("ThreadVisStatusMenuDisableFolder").toggleAttribute("checked", disabledFolder);
 
             // enable/disable account settings
             document.getElementById("ThreadVisStatusMenuEnableAccount").disabled = disabledGloda;
